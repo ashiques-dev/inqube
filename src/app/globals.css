@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: hsl(0 0% 100%);
+  --accent: hsl(0 0% 97%);
+  --muted: hsl(0 0% 91%);
+  --red: hsl(0, 92%, 61%);
+  --primary: hsl(42, 100%, 50%);
+
+  --heading: hsl(0 0% 4%);
+  --secondary: hsl(0, 0%, 20%);
+  --light: rgb(115, 115, 115);
+
+  --border: hsl(0 0% 85%);
+}
+.dark {
+  --background: hsl(0 0 0%);
+  --accent: hsl(0 0% 5%);
+  --muted: hsl(0 0% 10%);
+  --red: hsl(0, 90%, 40%);
+  --primary: hsl(42, 100%, 45%);
+
+  --heading: hsl(0 0% 96%);
+  --secondary: hsl(0, 0%, 70%);
+  --light: hsl(0 0% 50%);
+
+  --border: hsl(0 0% 15%);
+}
+
+@theme inline {
+  --color-*: initial;
+  --color-background: var(--background);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --color-red: var(--red);
+  --color-primary: var(--primary);
+
+  --color-heading: var(--heading);
+  --color-secondary: var(--secondary);
+  --color-light: var(--light);
+
+  --color-border: var(--border);
+}
+
+@layer base {
+  * {
+    @apply border-border focus-visible:outline-none select-none;
+  }
+  body {
+    @apply bg-background text-secondary text-sm lg:text-base antialiased;
+  }
+  button {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .padding {
+    @apply px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-14;
+  }
+
+  .width {
+    @apply w-[97%] max-w-[90rem] mx-auto;
+  }
+  *::-webkit-scrollbar {
+    display: none;
+  }
+  .animated{
+    @apply transition-all duration-300
+  }
+}
